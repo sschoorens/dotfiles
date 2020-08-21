@@ -1,0 +1,52 @@
+[alias]
+	st = status
+	ci = commit -v
+	up = !git pull --recurse-submodules && git submodule update --init --recursive && git lfs pull
+	unci = reset --soft HEAD^
+	r = remote
+	rv = remote -v
+	# list all new commits after you fetched, with stats, but excluding merges
+	last-ci = log ORIG_HEAD.. --stat --no-merges
+	br = branch
+	co = checkout
+	df = diff
+	dc = diff --cached
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	# enhanced log:
+	lg = log --graph --stat --raw
+	# log with diff:
+	llg = log --graph --stat --raw -p
+	ls = ls-files
+	# show files ignored by git:
+	ign = ls-files -o -i --exclude-standard
+
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = cyan bold
+	untracked = yellow bold
+[core]
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[push]
+	default = simple
+[filter "lfs"]
+       clean = git-lfs clean -- %f
+       smudge = git-lfs smudge -- %f
+       process = git-lfs filter-process
+       required = true
+[fetch]
+    prune = true
+[include]
+    path = .gitconfig_private
