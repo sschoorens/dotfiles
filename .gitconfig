@@ -50,3 +50,5 @@
     prune = true
 [include]
     path = .gitconfig_private
+[pull]
+	rebase = true
