@@ -10,7 +10,7 @@ ResetColor="\[\033[0m\]"       # Text Reset
 # Regular Colors
 Red="\[\033[0;31m\]"          # Red
 Yellow="\[\033[0;33m\]"       # Yellow
-Blue="\[\033[0;34m\]"         # Blue
+Blue="\[\033[0;36m\]"         # Blue
 WHITE='\[\033[37m\]'
 
 # Bold
