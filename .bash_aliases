@@ -2,7 +2,7 @@ alias ls='ls -alh --color'
 alias edit='subl'
 alias sedit='sudo subl'
 alias addtogroup='sudo usermod -a -G'
-alias full-upgrade='sudo yay -Syu'
+alias full-upgrade='yay -Syu && yay -c'
 alias gitpushskipci='git push -o ci.skip'
 function resettouchpad() {
     sudo modprobe -r psmouse
