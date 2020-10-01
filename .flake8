@@ -1,5 +1,5 @@
 [flake8]
 complexity = 10
 strict = true
-ignore = E520,E265
+ignore = E265,E501,W503,W505
 max-line-length = 400

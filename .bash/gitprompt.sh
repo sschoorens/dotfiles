@@ -32,12 +32,13 @@ GIT_PROMPT_PREFIX="["
 GIT_PROMPT_SUFFIX="]"
 GIT_PROMPT_SEPARATOR="|"
 GIT_PROMPT_BRANCH="${Magenta}"
-GIT_PROMPT_STAGED="${Red}● "
-GIT_PROMPT_CONFLICTS="${Red}✖ "
-GIT_PROMPT_CHANGED="${Blue}✚ "
+GIT_PROMPT_STAGED=" ${Red}●"
+GIT_PROMPT_CONFLICTS=" ${Red}✖ "
+GIT_PROMPT_CHANGED="${Blue}+"
+GIT_PROMPT_STASHED="${Blue}\\"
 GIT_PROMPT_REMOTE=" "
 GIT_PROMPT_UNTRACKED="…"
-GIT_PROMPT_CLEAN="${BGreen}✔"
+GIT_PROMPT_CLEAN=" ${BGreen}✔ "
 WHOAMI="$BGreen\u$Yellow@\h"
 PROMPT_START="$Time24 $ResetColor$WHOAMI:$Blue$PathShort$Yellow $WHITE$ResetColor"
 PROMPT_END="$ "
@@ -46,7 +47,7 @@ PROMPT_END="$ "
 function update_current_git_vars() {
     unset __CURRENT_GIT_STATUS
     local gitstatus="${__GIT_PROMPT_DIR}/gitstatus.py"
-    
+
     _GIT_STATUS=$(python $gitstatus)
     __CURRENT_GIT_STATUS=($_GIT_STATUS)
 	GIT_BRANCH=${__CURRENT_GIT_STATUS[0]}
@@ -58,7 +59,8 @@ function update_current_git_vars() {
 	GIT_CONFLICTS=${__CURRENT_GIT_STATUS[3]}
 	GIT_CHANGED=${__CURRENT_GIT_STATUS[4]}
 	GIT_UNTRACKED=${__CURRENT_GIT_STATUS[5]}
-	GIT_CLEAN=${__CURRENT_GIT_STATUS[6]}
+	GIT_STASHED=${__CURRENT_GIT_STATUS[6]}
+	GIT_CLEAN=${__CURRENT_GIT_STATUS[7]}
 }
 
 function setGitPrompt() {
@@ -85,6 +87,9 @@ function setGitPrompt() {
 	  fi
 	  if [ "$GIT_UNTRACKED" -ne "0" ]; then
 		  STATUS="$STATUS$GIT_PROMPT_UNTRACKED$GIT_UNTRACKED$ResetColor"
+	  fi
+	  if [ "$GIT_STASHED" -ne "0" ]; then
+		  STATUS="$STATUS$GIT_PROMPT_STASHED$GIT_STASHED$ResetColor"
 	  fi
 	  if [ "$GIT_CLEAN" -eq "1" ]; then
 		  STATUS="$STATUS$GIT_PROMPT_CLEAN"
