@@ -13,6 +13,7 @@
         "no-var": "warn",
         "prefer-const": "warn",
         "key-spacing": "error",
+        "func-call-spacing": "error",
         "keyword-spacing": "error",
         "space-infix-ops": "error",
         "no-use-before-define": "error",
@@ -26,5 +27,9 @@
         "browser": true,
         "jquery": true,
         "es6": true
+    },
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 8
     }
 }
